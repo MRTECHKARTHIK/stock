@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Screen Video with Centered Dashboard Button</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+            font-family: Arial, sans-serif;
+        }
+        .video-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .dashboard-button {
+            position: absolute;
+            top: 63%; /* Adjusts the button position */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: transparent; /* Fully transparent background */
+            color: #ffffff; /* White text */
+            border: none; /* Remove border */
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .dashboard-button:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Light transparent background on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video id="background-video" autoplay loop muted>
+            <source src="stock.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button class="dashboard-button" id="dashboard-button">__________________________________________________________________________________</button>
+    </div>
+
+    <script>
+        const video = document.getElementById('background-video');
+        const dashboardButton = document.getElementById('dashboard-button');
+
+        // Function to unmute the video and hide the button
+        function unmuteVideo() {
+            video.muted = false; // Unmute the video
+            console.log('Video unmuted automatically'); // For debugging
+        }
+
+        // Auto click after 3 seconds (3000 milliseconds)
+        setTimeout(unmuteVideo, 3000); // Change the duration as needed
+
+        dashboardButton.onclick = function() {
+            window.location.href = "http://localhost:8501/"; // Redirect to the dashboard
+        };
+    </script>
+</body>
+</html>
